@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Product Landing Page</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <section class="hero">
+      <img src="public/hero.png" alt="Hero" class="hero-image" />
+    </section>
+
+    <section class="intro">
+      <div class="section-inner">
+        <h2 class="section-title">Make Things Happen</h2>
+        <div class="intro-text">
+          <p>
+            Ideas to solve problems are hided in the mundane. No matter what
+            happens, the passion to build something people want would never die.
+          </p>
+          <p>
+            Yoshi, product builder who believes and passionates development that
+            from ideas to production, and scale.
+          </p>
+          <p>
+            I decided to achive continuous building what people need and develop
+            my skills to make people delighted.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="products">
+      <div class="section-inner">
+        <h2 class="section-title">Products</h2>
+        <div class="product-grid">
+          <div class="product-card">
+            <img src="public/product-1.png" alt="Product 1" />
+          </div>
+          <div class="product-card">
+            <img src="public/product-2.png" alt="Product 2" />
+          </div>
+          <div class="product-card">
+            <img src="public/product-3.png" alt="Product 3" />
+          </div>
+        </div>
+        <a class="pill-button" href="#">Read more</a>
+      </div>
+    </section>
+
+    <section class="progress">
+      <div class="section-inner">
+        <h2 class="section-title">Progress</h2>
+        <div class="progress-wrapper" data-start="2026-02-03">
+          <div class="progress-labels">
+            <span>0day</span>
+            <span>100day</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact">
+      <div class="section-inner">
+        <h2 class="section-title">Contact</h2>
+        <p class="contact-email">sample@sample.com</p>
+        <div class="sns-icons">
+          <a href="#" aria-label="X">
+            <img src="public/icon-x.png" alt="X" />
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <img src="public/icon-linkedin.png" alt="LinkedIn" />
+          </a>
+          <a href="#" aria-label="Facebook">
+            <img src="public/icon-facebook.png" alt="Facebook" />
+          </a>
+        </div>
+      </div>
+    </section>
+    <script>
+      (() => {
+        const wrapper = document.querySelector(".progress-wrapper");
+        if (!wrapper) return;
+        const startValue = wrapper.dataset.start || "2026-02-03";
+        const startParts = startValue.split("-").map(Number);
+        const startDate = new Date(startParts[0], startParts[1] - 1, startParts[2]);
+        const now = new Date();
+        const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        let days = Math.floor((today - startDate) / 86400000) + 1;
+        if (days < 0) days = 0;
+        if (days > 100) days = 100;
+        const fill = document.querySelector(".progress-fill");
+        if (fill) fill.style.width = `${days}%`;
+      })();
+    </script>
+  </body>
+</html>
